@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Self.Title}}</title>
+</head>
+<body>
+
+<p>
+    {{range .Parents}}
+        <a href="{{.Id}}">{{.Title}}</a> /
+    {{end}}
+</p>
+
+<h1>{{.Self.Title}}</h1>
+<p>Created: {{.Self.CreateDate}}</p>
+<p>{{.Self.Description}}</p>
+
+<h2>Sub-Records</h2>
+{{range .Children}}
+    <h3><a href="{{.Id}}">{{.Title}}</a></h3>
+    <p>Created: {{.CreateDate}}</p>
+    <p>{{.Description}}</p>
+{{else}}
+    <p>No Sub-Records</p>
+{{end}}
+
+{{if .Content}}
+    <h2>Content</h2>
+    {{.Content}}
+{{end}}
+
+</body>
+</html>
